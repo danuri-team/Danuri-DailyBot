@@ -1,0 +1,16 @@
+name: Daily Alert
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  send-discord-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"content": "테스트!"}' \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
