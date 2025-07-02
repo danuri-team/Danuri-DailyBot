@@ -13,17 +13,5 @@ jobs:
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
-               -d "{
-                 \"embeds\": [
-                   {
-                     \"title\": \"📝 데일리 스크럼 시간입니다!\",
-                     \"description\": \"<@1389837472313118754> 오늘 어떤 일을 하시나요?\\n다른 팀원과 협업해야 할 일이 있나요?\\n\\n이 메시지 아래에 남겨주세요!\",
-                     \"color\": 102655,
-                     \"footer\": {
-                       \"text\": \"다누리 팀 데일리 봇\"
-                     },
-                     \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
-                   }
-                 ]
-               }" \
+               -d '{"content": "<@&1389837472313118754> 데일리 스크럼을 작성해주세요!\n오늘 어떤 일을 하시나요?\n다른 팀원과 협업해야 할 일이 있나요?"}' \
                ${{ secrets.DISCORD_WEBHOOK_URL }}
